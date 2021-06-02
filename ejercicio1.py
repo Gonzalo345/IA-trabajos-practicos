@@ -230,7 +230,7 @@ def dist(a,b):
     return distancia
 
 X = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-C = np.array([[1, 0, 0], [0, 1, 1], [1,0,0]])
+C = np.array([[1, 0, 0], [0, 1, 1]])
 
 
 print("Distancia de los puntos en X a C[0] es = ", dist(X,C[0]))
@@ -257,13 +257,13 @@ def distancias_a_centroides(puntos, centroides):
      numpy.reshape(a, newshape, order='C')
     '''
     coordenadas_relativas = puntos.reshape((puntos.shape[0],1,puntos.shape[1])) - centroides
-    distancias = norma2(coordenadas_relativas)
-    #distancia = np.sum((a-b)**2, axis=1)**(1/2) 
+    #distancias = norma2(coordenadas_relativas)
+    distancias = np.sum((coordenadas_relativas)**2, axis=1)**(1/2) 
     return distancias
 
 #Centroide = np.argmin()
 
-print("Distancias ",distancias_a_centroides(X,C))
+print("Distancias \n",distancias_a_centroides(X,C))
 
 
 
