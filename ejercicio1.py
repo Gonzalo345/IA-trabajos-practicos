@@ -225,30 +225,9 @@ Dada una nube de puntos X y centroides C, obtener la distancia entre cada vector
 X = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 C = [[1, 0, 0], [0, 1, 1]]   
 '''
-def centroids_distance(points, centroids):
-    '''
-    Calculates the distance between each point to each centroid. All
-    elements ar (1,3) and the returned array is (len(points), len(centroids))
-    Parameters
-    ----------
-    points : TYPE
-        DESCRIPTION.
-    centroids : TYPE
-        DESCRIPTION.
-
-    Returns
-    -------
-    distancia : TYPE
-        DESCRIPTION.
-    '''
-    # The idea is to convert the points into an array(1,n_points *3)
-    # and then to subtract the centers, 1 should get (n_centers, n_points * 3)
-    points_flat = points.reshape(1, len(points) * 3)
-    substraction = points_flat - np.tile(centroids, (1, len(points)))
-    colum = np.reshape(substraction ** 2, len(centroids) * len(points)* 3)
-    squares_sum = np.sum(colum, axis=1)
-    #distancia = np.sum((a-b)**2, axis=1)**(1/2) 
-    return np.reshape(np.sqrt(squares_sum),(len(centroids), len(points)))
+def dist(a,b):  
+    distancia = np.sum((a-b)**2, axis=1)**(1/2) 
+    return distancia
 
 X = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 C = np.array([[1, 0, 0], [0, 1, 1], [1,0,0]])
@@ -272,12 +251,19 @@ print("                           [ 2.4  7.5  12.7]")
 print("Resultado esperado         [ P[1] P[1] P[1]]")
 
 
-
-centroide = dist(X,C)
+def distancias_a_centroides(puntos, centroides):
+    '''
+    Parameters
+     numpy.reshape(a, newshape, order='C')
+    '''
+    coordenadas_relativas = puntos.reshape((puntos.shape[0],1,puntos.shape[1])) - centroides
+    distancias = norma2(coordenadas_relativas)
+    #distancia = np.sum((a-b)**2, axis=1)**(1/2) 
+    return distancias
 
 #Centroide = np.argmin()
 
-print("Obtener para cada pu",centroide)
+print("Distancias ",distancias_a_centroides(X,C))
 
 
 
