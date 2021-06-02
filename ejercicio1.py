@@ -216,6 +216,74 @@ for i in range(np.amax(predicted_rank)):
     print("Precision para q_id ", i + 1, " = ", auxTrue[i], " / ", auxDatos[i], " = ", auxTrue[i]/auxDatos[i] )
 
 
+print("\n---- Ejercicio 6 ----")
+print("Distancia a Centroides\n")
+
+'''
+Dada una nube de puntos X y centroides C, obtener la distancia entre cada vector X y los centroides utilizando operaciones vectorizadas y broadcasting en NumPy. Utilizar como referencia los siguientes valores:
+
+X = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+C = [[1, 0, 0], [0, 1, 1]]   
+'''
+def centroids_distance(points, centroids):
+    '''
+    Calculates the distance between each point to each centroid. All
+    elements ar (1,3) and the returned array is (len(points), len(centroids))
+    Parameters
+    ----------
+    points : TYPE
+        DESCRIPTION.
+    centroids : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    distancia : TYPE
+        DESCRIPTION.
+    '''
+    # The idea is to convert the points into an array(1,n_points *3)
+    # and then to subtract the centers, 1 should get (n_centers, n_points * 3)
+    points_flat = points.reshape(1, len(points) * 3)
+    substraction = points_flat - np.tile(centroids, (1, len(points)))
+    colum = np.reshape(substraction ** 2, len(centroids) * len(points)* 3)
+    squares_sum = np.sum(colum, axis=1)
+    #distancia = np.sum((a-b)**2, axis=1)**(1/2) 
+    return np.reshape(np.sqrt(squares_sum),(len(centroids), len(points)))
+
+X = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+C = np.array([[1, 0, 0], [0, 1, 1], [1,0,0]])
+
+
+print("Distancia de los puntos en X a C[0] es = ", dist(X,C[0]))
+print("Distancia de los puntos en X a C[1] es = ", dist(X,C[1]))
+
+print("\n---- Ejercicio 7 ----")
+print("Etiquetar Cluster\n")
+
+'''
+Obtener para cada fila en X, el índice de la fila en C con distancia euclídea más pequeña. Es decir, para cada fila en X, 
+determinar a qué cluster pertenece en C. Hint: usar np.argmin.
+'''
+print("x = \n", X)
+'''Obtener para cada punto en X el cluster mas cercano'''
+
+print("Valores calculados ej 6 =  [ 3.6  8.3  13.4]")
+print("                           [ 2.4  7.5  12.7]")
+print("Resultado esperado         [ P[1] P[1] P[1]]")
+
+
+
+centroide = dist(X,C)
+
+#Centroide = np.argmin()
+
+print("Obtener para cada pu",centroide)
+
+
+
+
+
+
 
 
 
