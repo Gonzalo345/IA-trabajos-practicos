@@ -255,35 +255,48 @@ def distancias_a_centroides(puntos, centroides):
     '''
     Parameters
      numpy.reshape(a, newshape, order='C')
+     np.expand_dims(x, axis=1)  # Equivalent to x[:,newaxis]
+     Note that some examples may use None instead of np.newaxis.
     '''
-    coordenadas_relativas = puntos.reshape((puntos.shape[0],1,puntos.shape[1])) - centroides
-    #distancias = norma2(coordenadas_relativas)
-    distancias = np.sum((coordenadas_relativas)**2, axis=1)**(1/2) 
+    #print("Centroides \n", centroides, "\nDimension", centroides.shape)
+    centroides = centroides [:,None]    
+    #print("Centroides \n", centroides, "\nDimension", centroides.shape)
+    distancias = np.sum((centroides-puntos)**2, axis=2)**(1/2) 
     return distancias
 
 #Centroide = np.argmin()
 
-print("Distancias \n",distancias_a_centroides(X,C))
+distancias = distancias_a_centroides(X,C)
+dMin = np.min(distancias,axis=0)
+print("Distancias \n", distancias)
+print("Distancias shape  \n", distancias.shape)
+print(distancias[0,:]) #Vector fila 0
+for columna in range(len(distancias)):
+    indices = np.array()
+    print(columna)
+#print("Distancias minimas\n", dMin )
+#print("Posicion", np.where(dMin))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
+'''
+class SyntheticDataset(object):
+    
+    def __init__(self, n_samples, inv_overlap):
+        
+        self.n_samples = n_samples
+        self.inv.overleap = inv_overlap
+        self.data, self.cluster_ids = self._build_cluster()
+    
+    def _build_cluster(self):
+        
+        centroids = np.array([
+            [1, 0, 0]
+            [0, 1, 1]
+        ], dtype=(np.float))
+        centroids = centroids * self.inv_overlap
+        #   numpy.repeat(a,         repeats,            axis=None)
+        data = np.repeat(centroids, self.n_samples / 2, axis=0)
+        #                 random.normal(loc=0.0, scale=1.0, size=None)
+        normal_noise = np.random.normal(loc=0.0, scale=1.0, size=(self.n_samples,4))
+        data = data + normal_noise        
+'''
