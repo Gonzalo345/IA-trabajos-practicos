@@ -255,48 +255,76 @@ def distancias_a_centroides(puntos, centroides):
     '''
     Parameters
      numpy.reshape(a, newshape, order='C')
-     np.expand_dims(x, axis=1)  # Equivalent to x[:,newaxis]
-     Note that some examples may use None instead of np.newaxis.
     '''
-    #print("Centroides \n", centroides, "\nDimension", centroides.shape)
-    centroides = centroides [:,None]    
-    #print("Centroides \n", centroides, "\nDimension", centroides.shape)
-    distancias = np.sum((centroides-puntos)**2, axis=2)**(1/2) 
+    exppanded_C = centroides[:, None]
+    distancias = np.sqrt(np.sum((exppanded_C - puntos) ** 2, axis=2)) 
+    print("Distancias \n", distancias)
     return distancias
 
-#Centroide = np.argmin()
+arg_min = np.argmin(distancias_a_centroides(X,C),axis=0)
 
-distancias = distancias_a_centroides(X,C)
-dMin = np.min(distancias,axis=0)
-print("Distancias \n", distancias)
-print("Distancias shape  \n", distancias.shape)
-print(distancias[0,:]) #Vector fila 0
-for columna in range(len(distancias)):
-    indices = np.array()
-    print(columna)
-#print("Distancias minimas\n", dMin )
-#print("Posicion", np.where(dMin))
+print("Centroide de pertenencia \n", arg_min)
 
+print("\n---- Ejercicio 8 ----")
+print("Implementación Básica de K-means\n")
 
 '''
-class SyntheticDataset(object):
-    
-    def __init__(self, n_samples, inv_overlap):
-        
-        self.n_samples = n_samples
-        self.inv.overleap = inv_overlap
-        self.data, self.cluster_ids = self._build_cluster()
-    
-    def _build_cluster(self):
-        
-        centroids = np.array([
-            [1, 0, 0]
-            [0, 1, 1]
-        ], dtype=(np.float))
-        centroids = centroids * self.inv_overlap
-        #   numpy.repeat(a,         repeats,            axis=None)
-        data = np.repeat(centroids, self.n_samples / 2, axis=0)
-        #                 random.normal(loc=0.0, scale=1.0, size=None)
-        normal_noise = np.random.normal(loc=0.0, scale=1.0, size=(self.n_samples,4))
-        data = data + normal_noise        
+K-means es uno de los algoritmos más básicos en Machine Learning no supervisado. 
+Es un algoritmo de clusterización, que agrupa datos que comparten características similares. 
+Recordemos que entendemos datos como n realizaciones del vector aleatorio X.
+
+El algoritmo funciona de la siguiente manera:
+
+ 1_ El usuario selecciona la cantidad de clusters a crear n.
+ 2_ Se seleccionan n elementos aleatorios de X como posiciones iniciales del los centroides C.
+ 3_ Se calcula la distancia entre todos los puntos en X y todos los puntos en C.
+ 4_ Para cada punto en X se selecciona el centroide más cercano de C.
+ 5_ Se recalculan los centroides C a partir de usar las filas de X que pertenecen a cada centroide.
+ 6_ Se itera entre 3 y 5 una cantidad fija de veces o hasta que la posición de los centroides no cambie dada una tolerancia.
+Se debe por lo tanto implementar la función k_means(X, n) de manera tal que, al finalizar, devuelva la posición de los 
+centroides y a qué cluster pertenece cada fila de X.
+
+Hint: para (2) utilizar funciones de np.random, para (3) y (4) usar los ejercicios anteriores, para (5) es válido 
+utilizar un for. Iterar 10 veces entre (3) y (5).
 '''
+
+'''
+datos = n realizaciones del vector aleatorio X
+
+'''
+
+def k_means(X, n_clusters):
+    '''
+    numpy.eye(N, M=None, k=0, dtype=<class 'float'>, order='C', *, like=None)
+    Return a 2-D array with ones on the diagonal and zeros elsewhere.
+
+    '''
+    centroids = np.eye(n_clusters, X.shape[1])
+    print(centroids)
+    for i in tange(MAX_ITERATIONS):
+        print("Iteration # {}".format(i))
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
