@@ -292,20 +292,37 @@ utilizar un for. Iterar 10 veces entre (3) y (5).
 datos = n realizaciones del vector aleatorio X
 
 '''
+MAX_ITERATIONS = 10
 
-def k_means(X, n_clusters):
+def k_means(X, n_clusters): # el usuario selecciona la cantidad de clusters a crear n 
     '''
     numpy.eye(N, M=None, k=0, dtype=<class 'float'>, order='C', *, like=None)
     Return a 2-D array with ones on the diagonal and zeros elsewhere.
 
     '''
-    centroids = np.eye(n_clusters, X.shape[1])
+    centroids = np.eye(n_clusters, X.shape[1])          # Se seleccionan n elementos aleatorios como posiciones iniciales de los centroides
     print(centroids)
-    for i in tange(MAX_ITERATIONS):
+    for i in range(MAX_ITERATIONS):
         print("Iteration # {}".format(i))
+        centroids, cluster_ids = k_means_loop(X, centroids)
+        print(centroids)
+    return centroids, cluster_ids
+
+def k_means_loop(X, centroids):
+    # encontrar el label de cada fila de X en funcion de los centroides
+    expanded_centroids = centroids[:, None]
+    distances = np.sqrt(np.sum((expanded_centroids - X) ** 2, axis=2))
+    arg_min = np.argmin(distances, axis=0)
+    
+    #rederterminar los centroides
+    for i in range(centroids.shape[0]):
+        centroids[i] = np.mean(X[arg_min == i, :], axis=0)
         
+    return centroids, arg_min
+        
+X = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 
-
+k_means(X, n_clusters=4)
 
 
 
