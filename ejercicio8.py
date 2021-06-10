@@ -75,8 +75,9 @@ def k_means_loop(X, centroids):
 
 class SyntheticDataset(object):
     
-    def __init__(self, n_samples, inv_overlap):
+    def __init__(self, n_samples, n_cluster, inv_overlap):
         self.n_samples = n_samples
+        self.n_cluster = n_cluster
         self.inv_overlap = inv_overlap
         self.data, self.cluster_ids = self._build_cluster()
         
@@ -96,16 +97,21 @@ class SyntheticDataset(object):
         return pca.fit_transform(data_std)
         
     def _build_cluster(self):
-        centroids = np.array([
+        data = np.repeat(centroids, self.n_samples / 2, axis=0)
+        prit("Data\n", data)
+        centroids = np.random.choice(data, size=4, replace=True, p=None)
+        print("Centroides", centroids)
+        print(np.random.random_integers(10, size=(2, 4)))
+        '''centroids = np.array([
             [1, 0, 0, 0,],
             [0, 1, 0, 0,],
-        ], dtype=np.float32)
+        ], dtype=np.float32)'''
         centroids = centroids * self.inv_overlap
         data = np.repeat(centroids, self.n_samples / 2, axis=0)
         #s = np.random.normal(mu, sigma, 1000)
         normal_noise = np.random.normal(loc=0, scale=1, size=(self.n_samples, 4))
         data = data + normal_noise
-        
+
         cluster_ids = np.array([
             [0],
             [1],
@@ -115,7 +121,8 @@ class SyntheticDataset(object):
 
 
 if __name__ == '__main__':
-    synthetic_dataset = SyntheticDataset(n_samples = 10, inv_overlap = 18)
+    synthetic_dataset = SyntheticDataset(n_samples= 10, n_cluster = 2, inv_overlap = 18)
+
     #with open('', 'wb') as file:
         #pickle.dump(synthetic_dataset, file)
     print("Creamos el dataset")
