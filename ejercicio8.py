@@ -40,45 +40,14 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 
-
 MAX_ITERATIONS = 5
-
-def k_means(X, n_clusters): # el usuario selecciona la cantidad de clusters a crear n 
-    '''
-    numpy.eye(N, M=None, k=0, dtype=<class 'float'>, order='C', *, like=None)
-    Return a 2-D array with ones on the diagonal and zeros elsewhere.
-
-    '''
-    centroids = np.eye(n_clusters, X.shape[1])          # Se seleccionan n elementos aleatorios como posiciones iniciales de los centroides
-    print("Centroides \n", centroids)
-    for i in range(MAX_ITERATIONS):
-        print("Iteration # {}".format(i))
-        centroids, cluster_ids = k_means_loop(X, centroids)
-        print(centroids)
-    return centroids, cluster_ids
-
-def k_means_loop(X, centroids):
-    
-    # encontrar el label de cada fila de X en funcion de los centroides
-    expanded_centroids = centroids[:, None]
-    distances = np.sqrt(np.sum((expanded_centroids - X) ** 2, axis=2))
-    arg_min = np.argmin(distances, axis=0)
-    #print("Distancias \n", distances)
-    
-    #rederterminar los centroides
-    for i in range(centroids.shape[0]):
-        centroids[i] = np.mean(X[arg_min == i, :], axis=0)
-    #print("Centroides 2\n", centroids)    
-    return centroids, arg_min
-
-
 
 class SyntheticDataset(object):
     
-    def __init__(self, n_samples, n_cluster, inv_overlap):
+    def __init__(self, n_samples, n_cluster, nv_overlap):
         self.n_samples = n_samples
         self.n_cluster = n_cluster
-        self.inv_overlap = inv_overlap
+        self.nv_overlap = nv_overlap
        # self.data, self.cluster_ids = self._build_cluster()
         
     def train_valid_slpit(self):
@@ -97,14 +66,15 @@ class SyntheticDataset(object):
         return pca.fit_transform(data_std)
         
     def _build_cluster(self):
-        centroids = self.inv_overlap * np.random.random_sample((self.n_cluster, 3))
+        centroids = self.nv_overlap * np.random.random_sample((self.n_cluster, 2))
         data = np.repeat(centroids, self.n_samples/self.n_cluster, axis=0)
         print("Centroides \n", centroids)
-        print("Data sin ruido\n", data)
+        #print("Data sin ruido\n", data)
         #s = np.random.normal(mu, sigma, 1000)
-        normal_noise = np.random.normal(loc=0, scale=0.5, size=(self.n_samples, 3))
+        normal_noise = np.random.normal(loc=0, scale=0.5, size=(len(data), 2))
         data = data + normal_noise
-        print("Data con ruido\n", data)
+        self.data = data
+        #print("Data con ruido\n", data)
         cluster_ids = np.array([
             [0],
             [1],
@@ -112,19 +82,42 @@ class SyntheticDataset(object):
         cluster_ids = np.repeat(cluster_ids, self.n_samples / 2, axis=0)
         return data, cluster_ids
 
+def k_means(data, n_cluster, nv_overlap):  # el usuario selecciona la cantidad de clusters a crear n
+    '''
+    numpy.eye(N, M=None, k=0, dtype=<class 'float'>, order='C', *, like=None)
+    Return a 2-D array with ones on the diagonal and zeros elsewhere.
+    '''
+    #data = self.data
+    centroids = nv_overlap * np.random.random_sample((n_cluster, 2))
+    for i in range(MAX_ITERATIONS):
+        print("Iteration # {}".format(i))
+        centroids, cluster_ids = k_means_loop(data, centroids)
+    return centroids, cluster_ids
+
+def k_means_loop(data, centroids):
+    # encontrar el label de cada fila de X en funcion de los centroides
+    print("Centroides nuevos \n", centroids)
+    expanded_centroids = centroids[:, None]
+    distances = np.sqrt(np.sum((expanded_centroids - data) ** 2, axis=2))
+    arg_min = np.argmin(distances, axis=0)
+
+    # rederterminar los centroides
+    for i in range(centroids.shape[0]):
+        centroids[i] = np.mean(data[arg_min == i, :], axis=0)
+    return centroids, arg_min
+
+
+
 
 if __name__ == '__main__':
     print("Creamos el dataset")
-    synthetic_dataset = SyntheticDataset(n_samples= 10, n_cluster = 2, inv_overlap = 10)
-    #with open('', 'wb') as file:
-        #pickle.dump(synthetic_dataset, file)
+    synthetic_dataset = SyntheticDataset(n_samples= 200, n_cluster = 4, nv_overlap = 20)
+
     data, cluster_ids = synthetic_dataset._build_cluster()
-    centroids, cluster_ids = k_means(data, n_clusters=2)
+    x, y = zip(*data)
+    plt.scatter(x,y)
+    plt.show()
+    centroids, cluster_ids = k_means(data, n_cluster = 4, nv_overlap = 20)
 
 print("Nuevos centroides \n", centroids)
-print("Pertenencia de los puntos  a los respectivos centroides\n", cluster_ids)        
-        
-        
-        
-        
-        
+print("Pertenencia de los puntos  a los respectivos centroides\n", cluster_ids)
