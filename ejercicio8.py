@@ -79,7 +79,7 @@ class SyntheticDataset(object):
         self.n_samples = n_samples
         self.n_cluster = n_cluster
         self.inv_overlap = inv_overlap
-        self.data, self.cluster_ids = self._build_cluster()
+       # self.data, self.cluster_ids = self._build_cluster()
         
     def train_valid_slpit(self):
         idxs = np.random.permutation(self.n_samples)
@@ -97,21 +97,14 @@ class SyntheticDataset(object):
         return pca.fit_transform(data_std)
         
     def _build_cluster(self):
-        data = np.repeat(centroids, self.n_samples / 2, axis=0)
-        prit("Data\n", data)
-        centroids = np.random.choice(data, size=4, replace=True, p=None)
-        print("Centroides", centroids)
-        print(np.random.random_integers(10, size=(2, 4)))
-        '''centroids = np.array([
-            [1, 0, 0, 0,],
-            [0, 1, 0, 0,],
-        ], dtype=np.float32)'''
-        centroids = centroids * self.inv_overlap
-        data = np.repeat(centroids, self.n_samples / 2, axis=0)
+        centroids = self.inv_overlap * np.random.random_sample((self.n_cluster, 3))
+        data = np.repeat(centroids, self.n_samples/self.n_cluster, axis=0)
+        print("Centroides \n", centroids)
+        print("Data sin ruido\n", data)
         #s = np.random.normal(mu, sigma, 1000)
-        normal_noise = np.random.normal(loc=0, scale=1, size=(self.n_samples, 4))
+        normal_noise = np.random.normal(loc=0, scale=0.5, size=(self.n_samples, 3))
         data = data + normal_noise
-
+        print("Data con ruido\n", data)
         cluster_ids = np.array([
             [0],
             [1],
@@ -121,13 +114,11 @@ class SyntheticDataset(object):
 
 
 if __name__ == '__main__':
-    synthetic_dataset = SyntheticDataset(n_samples= 10, n_cluster = 2, inv_overlap = 18)
-
+    print("Creamos el dataset")
+    synthetic_dataset = SyntheticDataset(n_samples= 10, n_cluster = 2, inv_overlap = 10)
     #with open('', 'wb') as file:
         #pickle.dump(synthetic_dataset, file)
-    print("Creamos el dataset")
     data, cluster_ids = synthetic_dataset._build_cluster()
-    print("data = \n", data)
     centroids, cluster_ids = k_means(data, n_clusters=2)
 
 print("Nuevos centroides \n", centroids)
