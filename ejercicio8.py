@@ -97,9 +97,15 @@ def k_means(data, n_cluster, nv_overlap):  # el usuario selecciona la cantidad d
 def k_means_loop(data, centroids):
     # encontrar el label de cada fila de X en funcion de los centroides
     print("Centroides nuevos \n", centroids)
+    print("Centroid shape", centroids.shape)
     expanded_centroids = centroids[:, None]
+    print("Expanded centroid shape", expanded_centroids.shape)
+    print("Data shape", data.shape)
+
     distances = np.sqrt(np.sum((expanded_centroids - data) ** 2, axis=2))
+    print("Distances shape", data.shape)
     arg_min = np.argmin(distances, axis=0)
+    print("arg_min shape", arg_min.shape)
 
     # rederterminar los centroides
     for i in range(centroids.shape[0]):
