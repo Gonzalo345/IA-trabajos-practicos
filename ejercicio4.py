@@ -62,5 +62,5 @@ recall = np.sum(truePositive) / (np.sum(truePositive) + np.sum(falseNegative))
 print("Recall = TP / (TP + FN) = ", recall)
 
 accuracy = (np.sum(truePositive) + np.sum(trueNegative)) / (
-        np.sum(truePositive) + np.sum(trueNegative) + np.sum(falsePositive) + np.sum(falseNegative))
+np.sum(truePositive) + np.sum(trueNegative) + np.sum(falsePositive) + np.sum(falseNegative))
 print("Accuracy = (TP + TN) / (TP + TN + FP + FN) = ", accuracy)

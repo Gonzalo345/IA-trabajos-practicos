@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jun  7 18:19:43 2021
-
-@author: gonza
-"""
 import numpy as np
 
 MAX_ITERATIONS = 10
