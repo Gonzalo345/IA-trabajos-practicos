@@ -7,8 +7,18 @@ print("Etiquetar Cluster\n")
 Obtener para cada fila en X, el índice de la fila en C con distancia euclídea más pequeña. 
 Es decir, para cada fila en X, determinar a qué cluster pertenece en C. 
 Hint: usar np.argmin.
+
+X = [[1, 2, 3], 
+     [4, 5, 6], 
+     [7, 8, 9]]
+C = [[1, 0, 0], 
+     [0, 1, 1]]   
 '''
-print("x = \n", X)
+X = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print("Puntos     = \n", X)
+C = np.array([[1, 0, 0], [0, 1, 1]])
+print("Centroides = \n", C)
+
 '''Obtener para cada punto en X el cluster mas cercano'''
 
 print("Valores calculados ej 6 =  [ 3.6  8.3  13.4]")

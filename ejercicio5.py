@@ -1,10 +1,10 @@
 import numpy as np
-
 print("\n---- Ejercicio 5 ----")
 print("Average Query Precisión\n")
 
-'''En information retrieval o search engines, en general contamos con queries “q” y para cada “q” una lista de documentos 
-que son verdaderamente relevantes. Para evaluar un search engine, es común utilizar la métrica average query precision. 
+'''En information retrieval o search engines, en general contamos con queries “q” y para cada “q” una lista de 
+documentos que son verdaderamente relevantes. Para evaluar un search engine, es común utilizar la métrica average query 
+precision. 
 Tomando de referencia el siguiente ejemplo, calcular la métrica con NumPy utilizando operaciones vectorizadas.
 
 q_id =             [1, 1, 1, 1,  2, 2, 2,  3, 3, 3, 3, 3,  4, 4, 4, 4]
