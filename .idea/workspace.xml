@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c6e12a6-82ef-40cb-bf7a-9872b5a2b3ad" name="Default Changelist" comment="Se agrega entorno y ejercicio 2, 3.">
-      <change afterPath="$PROJECT_DIR$/pruebas8.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pruebas8c.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pruebas8d.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ejercicio9.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejercicio5.py" beforeDir="false" afterPath="$PROJECT_DIR$/ejercicio5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejercicio7.py" beforeDir="false" afterPath="$PROJECT_DIR$/ejercicio7.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejercicio8.py" beforeDir="false" afterPath="$PROJECT_DIR$/ejercicio8.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejercicio8b.py" beforeDir="false" afterPath="$PROJECT_DIR$/pruebas8b.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejercicio 10.py" beforeDir="false" afterPath="$PROJECT_DIR$/ejercicio10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebas8.py" beforeDir="false" afterPath="$PROJECT_DIR$/pruebas/pruebas8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebas8b.py" beforeDir="false" afterPath="$PROJECT_DIR$/pruebas/pruebas8b.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebas8c.py" beforeDir="false" afterPath="$PROJECT_DIR$/pruebas/pruebas8c.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebas8d.py" beforeDir="false" afterPath="$PROJECT_DIR$/pruebas/pruebas8d.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +37,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../examen/synthetic_dataset.py" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/pruebas" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.ejercicio8">
     <configuration name="ejercicio6" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -115,7 +120,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pruebas8.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pruebas/pruebas8.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -136,7 +141,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pruebas8b.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pruebas/pruebas8b.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />

@@ -1,6 +1,24 @@
-import numpy as np
+"""
+Ejercicio #10: Dataset a NumPy Estructurado - Patrón de Diseño Singleton house
+Para éste ejercicio vamos a descargar un dataset de Kaggle. Es recomendable que se creen una cuenta porque es un lugar
+de donde potencialmente vamos a descargar muchos recursos.
 
-print("Ejercicio 10")
+Pueden descargar el dataset desde aquí.
+
+El objetivo del ejercicio es crear una clase que permita realizar las siguientes funciones sobre el dataset:
+
+Crear la estructura de un structured numpy array para el dataset.
+Leer el csv, almacenar la información en el array estructurado.
+Guardar el array estructurado en formato .pkl.
+Crear una instancia singleton del array estructurado (utilizando __new__ e __init__).
+Al crear la instancia, si se encuentra el .pkl cargar desde el pkl. Si el .pkl no está, comenzar por transformar el .csv
+en .pkl y luego levantar la información.
+Encontrar una forma de optimizar la operación usando generators [opcional].
+"""
+
+import numpy as np
+print("\n---- Ejercicio 10 ----")
+
 inport pickle
 inport csv
 '''
