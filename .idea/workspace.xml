@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c6e12a6-82ef-40cb-bf7a-9872b5a2b3ad" name="Default Changelist" comment="Se agrega entorno y ejercicio 2, 3.">
-      <change afterPath="$PROJECT_DIR$/ejercicio9.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicio 10.py" beforeDir="false" afterPath="$PROJECT_DIR$/ejercicio10.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebas8.py" beforeDir="false" afterPath="$PROJECT_DIR$/pruebas/pruebas8.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebas8b.py" beforeDir="false" afterPath="$PROJECT_DIR$/pruebas/pruebas8b.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebas8c.py" beforeDir="false" afterPath="$PROJECT_DIR$/pruebas/pruebas8c.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebas8d.py" beforeDir="false" afterPath="$PROJECT_DIR$/pruebas/pruebas8d.py" afterDir="false" />
-    </list>
+    <list default="true" id="6c6e12a6-82ef-40cb-bf7a-9872b5a2b3ad" name="Default Changelist" comment="Se agrega entorno y ejercicio 2, 3." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
